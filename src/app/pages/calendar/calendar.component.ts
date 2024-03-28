@@ -1,18 +1,6 @@
 import { Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import {
-  CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { ModifyEventDialog } from '../shared/modify-event/modify-event.component';
 
@@ -30,17 +18,6 @@ export interface IEvent {
 
 @Component({
   selector: 'app-calendar',
-  standalone: true,
-  imports: [
-    MatButton,
-    MatDividerModule,
-    MatIconModule,
-    MatCardModule,
-    MatDatepickerModule,
-    CdkDropListGroup,
-    CdkDropList,
-    CdkDrag,
-  ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
   providers: [provideNativeDateAdapter()],

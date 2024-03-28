@@ -1,16 +1,24 @@
 <h2 mat-dialog-title>Modify Event</h2>
 <form class="col-12" [formGroup]="eventForm" (ngSubmit)="onSaveEvent()">
   <mat-dialog-content>
-    <!-- <p>What's your favorite animal?</p> -->
     <mat-form-field>
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>
-      Save
-    </button>
+    <button mat-button cdkFocusInitial type="submit">Save</button>
   </mat-dialog-actions>
 </form>
