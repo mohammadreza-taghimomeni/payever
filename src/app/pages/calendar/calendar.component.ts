@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
-
+import { CdkDrag } from '@angular/cdk/drag-drop';
 interface IHour {
   name: string;
   time: string;
@@ -25,6 +25,7 @@ interface IEvent {
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
+    CdkDrag,
   ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',

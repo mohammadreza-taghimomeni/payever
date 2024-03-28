@@ -36,7 +36,12 @@
     </div>
     <div class="second-col">
       @for (hour of hours; track hour.time) {
-      <div class="event-item">&nbsp;</div>
+      <div class="event-item">
+        &nbsp;
+        <div class="event-box" cdkDragLockAxis="y" cdkDrag>
+          I can only be dragged up/down
+        </div>
+      </div>
       }
     </div>
   </div>

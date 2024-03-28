@@ -1,9 +1,6 @@
 .calendar-wrapper {
   //   width: 100%;
   //   padding: 1rem;
-  //   border-radius: 8px;
-  //   border: 1px solid rgba(149, 157, 165, 0.2);
-  //   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   .inline-calendar-card {
     width: 300px;
@@ -51,6 +48,16 @@
         border-top: 1px solid #eee;
         cursor: pointer;
         height: 3rem;
+
+        .event-box {
+          min-height: 1.5rem;
+          border-radius: 8px;
+          border: 1px solid rgba(149, 157, 165, 0.2);
+          background: #fff;
+          z-index: 9999;
+          padding: 0 0.5rem;
+          //   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
       }
     }
   }
