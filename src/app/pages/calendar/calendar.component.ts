@@ -18,11 +18,13 @@ import { ModifyEventDialog } from '../shared/modify-event/modify-event.component
 interface IHour {
   name: string;
   time: string;
+  event?: IEvent;
 }
 
 interface IEvent {
-  name: string;
-  time: string;
+  title: string;
+  description?: string;
+  date: Date;
 }
 
 @Component({
@@ -45,7 +47,7 @@ interface IEvent {
 export class CalendarComponent {
   selectedDate: Date | null;
   hours: IHour[];
-  events: IEvent[];
+  events: IEvent[] = [];
 
   constructor(public dialog: MatDialog) {
     this.selectedDate = new Date();
@@ -53,17 +55,20 @@ export class CalendarComponent {
       name: index.toString(),
       time: index.toString(),
     }));
+
+    this.onMakeEmptyEvents();
+  }
+
+  onMakeEmptyEvents() {
     this.events = Array.from(Array(24).keys()).map((index) => ({
-      name: index.toString(),
-      time: index.toString(),
+      title: '',
+      date: this.selectedDate || new Date(),
+      description: '',
     }));
   }
 
   onChangeDate() {
-    this.events = Array.from(Array(24).keys()).map((index) => ({
-      name: index.toString(),
-      time: index.toString(),
-    }));
+    this.onMakeEmptyEvents();
   }
 
   drop(event: CdkDragDrop<IEvent[]>) {

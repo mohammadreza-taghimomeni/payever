@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Hi {{ data.name }}</h2>
+<h2 mat-dialog-title>Modify Event</h2>
 <mat-dialog-content>
   <p>What's your favorite animal?</p>
   <mat-form-field>
@@ -7,8 +7,8 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
-    Ok
+    Save
   </button>
 </mat-dialog-actions>
