@@ -5,7 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { CdkDrag } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 interface IHour {
   name: string;
   time: string;
@@ -25,6 +32,8 @@ interface IEvent {
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
+    CdkDropListGroup,
+    CdkDropList,
     CdkDrag,
   ],
   templateUrl: './calendar.component.html',
@@ -42,7 +51,7 @@ export class CalendarComponent {
       name: index.toString(),
       time: index.toString(),
     }));
-    this.events = [];
+    this.events = this.hours;
   }
 
   getDatesInMonth(year: number, month: number): number[] {
@@ -51,7 +60,17 @@ export class CalendarComponent {
   }
 
   onChangeDate() {
-    debugger;
     this.events = [];
+  }
+
+  drop(event: CdkDragDrop<IEvent[]>) {
+    debugger;
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
