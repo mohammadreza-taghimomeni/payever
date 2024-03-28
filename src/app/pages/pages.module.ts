@@ -18,6 +18,8 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { provideNativeDateAdapter } from '@angular/material/core';
+
 @NgModule({
   declarations: [CalendarComponent, ModifyEventDialog],
   imports: [

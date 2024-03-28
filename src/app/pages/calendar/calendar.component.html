@@ -48,9 +48,9 @@
         @for (item of events; track item;) {
         <div
           class="example-box"
-          [class.active]="$index === 0"
+          [class.active]="item.hasEvent"
           cdkDrag
-          [cdkDragDisabled]="$index !== 0"
+          [cdkDragDisabled]="!item.hasEvent"
           (click)="onModifyEvent($index)"
         >
           {{ item.title || "(No title)" }}

@@ -1,20 +1,29 @@
 <h2 mat-dialog-title>Modify Event</h2>
-<form class="col-12" [formGroup]="eventForm" (ngSubmit)="onSaveEvent()">
+<form [formGroup]="eventForm" (ngSubmit)="onSaveEvent()">
   <mat-dialog-content>
-    <mat-form-field>
+    <mat-form-field class="col-12">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="col-12">
       <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" />
+      <input matInput [matDatepicker]="picker" formControlName="date" />
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+
+      @if(f["date"].hasError('required')){
+      <mat-error> required! </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
