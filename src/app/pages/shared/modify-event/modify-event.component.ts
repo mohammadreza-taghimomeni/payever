@@ -40,7 +40,8 @@ export class ModifyEventDialog {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    debugger;
+    this.dialogRef.close(null);
   }
 
   onSaveEvent() {
