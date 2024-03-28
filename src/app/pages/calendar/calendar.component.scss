@@ -64,10 +64,18 @@
       align-items: center;
       justify-content: space-between;
       box-sizing: border-box;
-      cursor: move;
       background: white;
       font-size: 14px;
       height: 3rem;
+
+      &.active {
+        cursor: move;
+        background: #3f51b5;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        color: #fff;
+        padding: 0 1rem;
+      }
     }
 
     .cdk-drag-preview {

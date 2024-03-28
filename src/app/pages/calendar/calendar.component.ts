@@ -51,16 +51,17 @@ export class CalendarComponent {
       name: index.toString(),
       time: index.toString(),
     }));
-    this.events = this.hours;
-  }
-
-  getDatesInMonth(year: number, month: number): number[] {
-    const numDays = new Date(year, month, 0).getDate();
-    return Array.from({ length: numDays }, (_, i) => i + 1);
+    this.events = Array.from(Array(24).keys()).map((index) => ({
+      name: index.toString(),
+      time: index.toString(),
+    }));
   }
 
   onChangeDate() {
-    this.events = [];
+    this.events = Array.from(Array(24).keys()).map((index) => ({
+      name: index.toString(),
+      time: index.toString(),
+    }));
   }
 
   drop(event: CdkDragDrop<IEvent[]>) {
