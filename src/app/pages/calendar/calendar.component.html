@@ -45,12 +45,13 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        @for (item of events; track item) {
+        @for (item of events; track item;) {
         <div
           class="example-box"
           [class.active]="item.name === '0'"
           cdkDrag
           [cdkDragDisabled]="item.name !== '0'"
+          (click)="onModifyEvent($index)"
         >
           {{ item.name }}
         </div>

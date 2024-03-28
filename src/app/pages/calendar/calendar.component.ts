@@ -13,6 +13,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { ModifyEventDialog } from '../shared/modify-event/modify-event.component';
 interface IHour {
   name: string;
   time: string;
@@ -45,7 +47,7 @@ export class CalendarComponent {
   hours: IHour[];
   events: IEvent[];
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.selectedDate = new Date();
     this.hours = Array.from(Array(24).keys()).map((index) => ({
       name: index.toString(),
@@ -72,5 +74,17 @@ export class CalendarComponent {
         event.currentIndex
       );
     }
+  }
+
+  onModifyEvent(index: number): void {
+    console.log(index);
+
+    const dialogRef = this.dialog.open(ModifyEventDialog, {
+      data: { name: 'Mohammad', animal: 'ssss' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
+    });
   }
 }
