@@ -54,7 +54,13 @@
           (click)="onModifyEvent($index)"
         >
           @if(item.hasEvent){
-          {{ item.title || "(No title)" }}
+          <span>
+            {{ item.title || "(No title)" }}
+          </span>
+          <span>
+            {{ item.date | date : "HH:mm" }} -
+            {{ addHours(item.date, 1) | date : "HH:mm" }}</span
+          >
           }@else{ &nbsp; }
         </div>
         }
