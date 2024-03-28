@@ -12,11 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { IEvent } from '../../calendar/calendar.component';
 
 @Component({
   selector: 'app-modify-event',
@@ -37,8 +33,10 @@ export interface DialogData {
 export class ModifyEventDialog {
   constructor(
     public dialogRef: MatDialogRef<ModifyEventDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: IEvent
+  ) {
+    console.log('data', data);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -15,13 +15,14 @@ import {
 } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { ModifyEventDialog } from '../shared/modify-event/modify-event.component';
+
 interface IHour {
   name: string;
   time: string;
   event?: IEvent;
 }
 
-interface IEvent {
+export interface IEvent {
   title: string;
   description?: string;
   date: Date;
@@ -45,7 +46,7 @@ interface IEvent {
   providers: [provideNativeDateAdapter()],
 })
 export class CalendarComponent {
-  selectedDate: Date | null;
+  selectedDate: Date;
   hours: IHour[];
   events: IEvent[] = [];
 
@@ -60,10 +61,12 @@ export class CalendarComponent {
   }
 
   onMakeEmptyEvents() {
+    const date = this.selectedDate || new Date();
+
     this.events = Array.from(Array(24).keys()).map((index) => ({
       title: '',
-      date: this.selectedDate || new Date(),
       description: '',
+      date: new Date(date.setHours(index, 0, 0)),
     }));
   }
 
@@ -83,9 +86,10 @@ export class CalendarComponent {
 
   onModifyEvent(index: number): void {
     console.log(index);
+    let newEvent: IEvent = this.events[index];
 
     const dialogRef = this.dialog.open(ModifyEventDialog, {
-      data: { name: 'Mohammad', animal: 'ssss' },
+      data: newEvent,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -3,12 +3,12 @@
   <p>What's your favorite animal?</p>
   <mat-form-field>
     <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal" />
+    <input matInput [(ngModel)]="data.title" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
+  <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>
     Save
   </button>
 </mat-dialog-actions>
