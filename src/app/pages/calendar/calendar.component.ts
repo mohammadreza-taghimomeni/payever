@@ -64,7 +64,6 @@ export class CalendarComponent {
   }
 
   drop(event: CdkDragDrop<IEvent[]>) {
-    debugger;
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
