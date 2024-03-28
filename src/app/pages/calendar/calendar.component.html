@@ -53,7 +53,9 @@
           [cdkDragDisabled]="!item.hasEvent"
           (click)="onModifyEvent($index)"
         >
+          @if(item.hasEvent){
           {{ item.title || "(No title)" }}
+          }@else{ &nbsp; }
         </div>
         }
       </div>
