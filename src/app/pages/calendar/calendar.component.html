@@ -1,11 +1,43 @@
 <div class="calendar-wrapper">
-  <div class="example-button-row">
-    <button mat-raised-button>Basic</button>
-    <button mat-raised-button color="primary">Primary</button>
-    <button mat-raised-button color="accent">Accent</button>
-    <button mat-raised-button color="warn">Warn</button>
-    <button mat-raised-button disabled>Disabled</button>
+  <div class="calendar-header-wrapper">
+    <div>
+      <h4 class="title">My Calendar</h4>
+
+      <p>Selected date: {{ selectedDate }}</p>
+    </div>
+    <div>
+      <mat-icon>settings</mat-icon>
+
+      <!-- <button mat-raised-button color="primary">Primary</button> -->
+    </div>
   </div>
 
-  <mat-divider></mat-divider>
+  <div>
+    <mat-card class="inline-calendar-card">
+      <mat-calendar
+        [(selected)]="selectedDate"
+        (selectedChange)="onChangeDate()"
+      ></mat-calendar>
+    </mat-card>
+  </div>
+
+  <!-- <mat-divider></mat-divider> -->
+
+  <div class="calendar-items">
+    <div class="first-col">
+      @for (hour of hours; track hour.time) {
+      <div class="time-item">
+        <div class="hour">
+          {{ hour.name }}
+        </div>
+        &nbsp;
+      </div>
+      }
+    </div>
+    <div class="second-col">
+      @for (hour of hours; track hour.time) {
+      <div class="event-item">&nbsp;</div>
+      }
+    </div>
+  </div>
 </div>
